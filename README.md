@@ -100,7 +100,10 @@ Uzun vadede platformun, eğitim ve kariyer yönlendirme alanında küresel ölç
 
 ##  Demo
 
-![Potensia Demo](demo.png)
+<p align="center">
+  <img src="docs/demo.png" alt="Potensia Demo" width="700"/>
+</p>
+
 
 ---
 
