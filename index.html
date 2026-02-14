@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Potensia - Yetenek Keşfi</title>
+<style>
+body {
+    font-family: Arial;
+    background: #f4f7fb;
+    text-align: center;
+    padding: 40px;
+}
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+button {
+    margin: 8px;
+    padding: 10px 20px;
+    border: none;
+    background: #2c7be5;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Potensia — Potansiyel Keşif</h2>
+<p id="question"></p>
+<div id="answers"></div>
+<p id="result"></p>
+</div>
+
+<script>
+const questions = [
+{
+    text: "Boş zamanında ne yapmayı tercih edersin?",
+    options: [
+        { text: "Kod yazmak / teknoloji", type: "tech" },
+        { text: "Çizim / tasarım", type: "design" },
+        { text: "İnsanlarla sohbet", type: "social" }
+    ]
+},
+{
+    text: "Bir problemle karşılaştığında:",
+    options: [
+        { text: "Mantıksal çözüm ararım", type: "tech" },
+        { text: "Yaratıcı yollar denerim", type: "design" },
+        { text: "Birine danışırım", type: "social" }
+    ]
+}
+];
+
+let scores = { tech:0, design:0, social:0 };
+let current = 0;
+
+function showQuestion() {
+    if (current >= questions.length) return showResult();
+
+    const q = questions[current];
+    document.getElementById("question").innerText = q.text;
+
+    const answersDiv = document.getElementById("answers");
+    answersDiv.innerHTML = "";
+
+    q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.innerText = opt.text;
+        btn.onclick = () => {
+            scores[opt.type]++;
+            current++;
+            showQuestion();
+        };
+        answersDiv.appendChild(btn);
+    });
+}
+
+function showResult() {
+    let best = Object.keys(scores).reduce((a,b) => scores[a] > scores[b] ? a : b);
+
+    let message = "";
+
+    if(best === "tech")
+        message = "Yazılım, mühendislik ve teknoloji alanlarına yatkınsın.";
+    if(best === "design")
+        message = "Tasarım, sanat ve yaratıcı alanlar sana uygun.";
+    if(best === "social")
+        message = "Psikoloji, eğitim ve sosyal alanlar sana uygun.";
+
+    document.getElementById("question").innerText = "Sonuç";
+    document.getElementById("answers").innerHTML = "";
+    document.getElementById("result").innerText = message;
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
