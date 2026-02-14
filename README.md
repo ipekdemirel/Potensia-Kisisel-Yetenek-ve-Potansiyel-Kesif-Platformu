@@ -98,10 +98,17 @@ Uzun vadede platformun, eğitim ve kariyer yönlendirme alanında küresel ölç
 
 ---
 
+##  Demo
+
+![Potensia Demo](demo.png)
+
+---
 ##  Lisans
 
 Bu proje eğitim ve araştırma amaçlı geliştirilmiştir.  
 Tüm hakları saklıdır.
+
+
 
 
 
